@@ -37,6 +37,10 @@ const FinkiTimetableService = {
 
     fetchStudentTimetableForDay: (index,day)=>{
         const jwtToken = sessionStorage.getItem("jwt");
+        const username=sessionStorage.getItem("username");
+        if(username!==index){
+            //a way of authorization, not good enough
+        }
         return axios.get(`http://localhost:8080/timetable/student/${index}/${day}`,{headers: {"Authorization": jwtToken }});
     },
 

@@ -94,36 +94,31 @@ class App extends Component {
                 let timetableProps={...prevState.timetableProps};
                 timetableProps.events.monday= data.data;
                 return {timetableProps};
-            })
-        );
+            }))
         FinkiTimetableService.fetchStudentTimetableForDay(studentIndex,2).then(data=>
             this.setState((prevState)=>{
                 let timetableProps={...prevState.timetableProps};
                 timetableProps.events.tuesday= data.data;
                 return {timetableProps};
-            })
-        );
+            }))
         FinkiTimetableService.fetchStudentTimetableForDay(studentIndex,3).then(data=>
             this.setState((prevState)=>{
                 let timetableProps={...prevState.timetableProps};
                 timetableProps.events.wednesday= data.data;
                 return {timetableProps};
-            })
-        );
+            }))
         FinkiTimetableService.fetchStudentTimetableForDay(studentIndex,4).then(data=>
             this.setState((prevState)=>{
                 let timetableProps={...prevState.timetableProps};
                 timetableProps.events.thursday= data.data;
                 return {timetableProps};
-            })
-        );
+            }))
         FinkiTimetableService.fetchStudentTimetableForDay(studentIndex,5).then(data=>
             this.setState((prevState)=>{
                 let timetableProps={...prevState.timetableProps};
                 timetableProps.events.friday= data.data;
                 return {timetableProps};
-            })
-        );
+            }))
     }
 
     render() {

@@ -12,7 +12,8 @@ class TimetableUpload extends Component{
                 shouldHide: true,
             },
             semesterType: "",
-            semesterAcademicYear: ""
+            semesterAcademicYear: "",
+            message: ""
         }
         this.onFormSubmit = this.onFormSubmit.bind(this)
         this.onChange = this.onChange.bind(this)
@@ -25,12 +26,13 @@ class TimetableUpload extends Component{
         e.preventDefault() // Stop form submit
         let type=this.state.semesterType;
         let academicYear=this.state.semesterAcademicYear;
+        let message=this.state.message;
 
         if(this.state.visibility.shouldHide){
-            type=academicYear="";
+            type=academicYear=message="";
         }
 
-        if(this.state.file!=null){
+        if(this.state.file!=null && message===""){
             FinkiTimetableService.uploadFile(this.state.file,type,academicYear);
         }
 
@@ -45,7 +47,11 @@ class TimetableUpload extends Component{
     }
 
     semesterAcademicYearChange(e){
-        this.setState({semesterAcademicYear: e.target.value})
+        if(e.target.value.match("^2[0-9]{3}/2[0-9]{3}$") != null) {
+            this.setState({semesterAcademicYear: e.target.value})
+            this.setState({message: ""})
+        }
+        else this.setState({message: "невалиден формат на година"})
     }
 
     changeVisibility(e) {
@@ -89,6 +95,7 @@ class TimetableUpload extends Component{
                         <div>
                             <label htmlFor="academicYear" className={"pr-2"}>Академска година</label>
                             <input onChange={this.semesterAcademicYearChange} id="academicYear" type="text" placeholder={"пр. 2017/2018"}/>
+                            <div className={"mt-1"}><small className={"text-danger"}>{this.state.message}</small></div>
                         </div>
                     </div>
                     <button type="submit" className="btn btn-primary">Прикачи распоред</button>

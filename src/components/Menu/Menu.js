@@ -15,7 +15,7 @@ const Menu = ({history})=> {
         sessionStorage.removeItem("username");
         sessionStorage.removeItem("jwt");
         sessionStorage.removeItem("role");
-        history.push('/');
+        history.push('/')
     }
 
 
@@ -28,10 +28,10 @@ const Menu = ({history})=> {
                     <span className={"ml-2"}><a className={"text-decoration-none"}
                                                 href={"/"}>Распоред на часови</a></span>
                 </NavbarBrand>
-                <Nav.Link>
-                    <Link className={"menu-link"} to={'/timetable/' +loggedin}>Мој распоред</Link>
-                    <span className={"ml-4"} onClick={(e) => logOut(e)}>Одјава</span>
-                </Nav.Link>
+                <Nav.Item>
+                    <span className={"ml-2"}><a className={"menu-link text-decoration-none"} href={"/timetable/"+loggedin}>Мој распоред</a></span>
+                     <span onClick={(e) => logOut(e)} className={"ml-4"}>Одјава</span>
+                </Nav.Item>
             </Nav>
         )
 
@@ -42,9 +42,9 @@ const Menu = ({history})=> {
                     <span className={"ml-2"}><a className={"text-decoration-none"}
                                                 href={"/"}>Распоред на часови</a></span>
                 </NavbarBrand>
-                <Nav.Link>
+                <Nav.Item >
                     <span className={"ml-4"} onClick={(e) => logOut(e)}>Одјава</span>
-                </Nav.Link>
+                </Nav.Item>
             </Nav>
         )
 
@@ -54,9 +54,9 @@ const Menu = ({history})=> {
                 <Image src={logo} fluid/>
                 <span className={"ml-2"}><a className={"text-decoration-none"} href={"/"}>Распоред на часови</a></span>
             </NavbarBrand>
-            <Nav.Link>
+            <Nav.Item>
                 <span><Link className="menu-link" to="/login">Најава</Link></span>
-            </Nav.Link>
+            </Nav.Item>
         </Nav>
     )
 }

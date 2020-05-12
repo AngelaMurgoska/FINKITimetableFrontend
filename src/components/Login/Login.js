@@ -42,10 +42,6 @@ class Login extends Component {
 
     render() {
         if (this.state.isAuthenticated === true) {
-            console.log(sessionStorage.getItem("role"));
-            if (sessionStorage.getItem("role")==="ROLE_STUDENT") {
-                return <Redirect to={'/timetable/' + this.state.username}/>
-            }
             return <Redirect to={'/'} />
         }
         else {
